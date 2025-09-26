@@ -1,5 +1,5 @@
 {
-  "name": "@acme/ui",
+  "name": "@ephin-travel-kit/ui",
   "private": true,
   "type": "module",
   "exports": {
@@ -31,10 +31,10 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@ephin-travel-kit/eslint-config": "workspace:*",
+    "@ephin-travel-kit/prettier-config": "workspace:*",
+    "@ephin-travel-kit/tailwind-config": "workspace:*",
+    "@ephin-travel-kit/tsconfig": "workspace:*",
     "@types/react": "catalog:react19",
     "eslint": "catalog:",
     "prettier": "catalog:",
@@ -46,5 +46,5 @@
     "react": "catalog:react19",
     "zod": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ephin-travel-kit/prettier-config"
 }

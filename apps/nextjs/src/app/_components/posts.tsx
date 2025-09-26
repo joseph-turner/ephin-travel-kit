@@ -6,10 +6,10 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 
-import type { RouterOutputs } from "@acme/api";
-import { CreatePostSchema } from "@acme/db/schema";
-import { cn } from "@acme/ui";
-import { Button } from "@acme/ui/button";
+import type { RouterOutputs } from "@ephin-travel-kit/api";
+import { CreatePostSchema } from "@ephin-travel-kit/db/schema";
+import { cn } from "@ephin-travel-kit/ui";
+import { Button } from "@ephin-travel-kit/ui/button";
 import {
   Form,
   FormControl,
@@ -17,9 +17,9 @@ import {
   FormItem,
   FormMessage,
   useForm,
-} from "@acme/ui/form";
-import { Input } from "@acme/ui/input";
-import { toast } from "@acme/ui/toast";
+} from "@ephin-travel-kit/ui/form";
+import { Input } from "@ephin-travel-kit/ui/input";
+import { toast } from "@ephin-travel-kit/ui/toast";
 
 import { useTRPC } from "~/trpc/react";
 

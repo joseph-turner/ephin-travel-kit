@@ -16,7 +16,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { cn } from "@acme/ui";
+import { cn } from "@ephin-travel-kit/ui";
 
 import { Label } from "./label";
 

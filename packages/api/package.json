@@ -1,5 +1,5 @@
 {
-  "name": "@acme/api",
+  "name": "@ephin-travel-kit/api",
   "private": true,
   "type": "module",
   "exports": {
@@ -18,20 +18,20 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
-    "@acme/validators": "workspace:*",
+    "@ephin-travel-kit/auth": "workspace:*",
+    "@ephin-travel-kit/db": "workspace:*",
+    "@ephin-travel-kit/validators": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "2.2.2",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@ephin-travel-kit/eslint-config": "workspace:*",
+    "@ephin-travel-kit/prettier-config": "workspace:*",
+    "@ephin-travel-kit/tsconfig": "workspace:*",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ephin-travel-kit/prettier-config"
 }

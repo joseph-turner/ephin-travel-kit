@@ -1,5 +1,5 @@
 {
-  "name": "@acme/eslint-config",
+  "name": "@ephin-travel-kit/eslint-config",
   "private": true,
   "type": "module",
   "exports": {
@@ -23,11 +23,11 @@
     "typescript-eslint": "^8.42.0"
   },
   "devDependencies": {
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@ephin-travel-kit/prettier-config": "workspace:*",
+    "@ephin-travel-kit/tsconfig": "workspace:*",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ephin-travel-kit/prettier-config"
 }

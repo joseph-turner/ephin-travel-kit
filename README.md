@@ -5,7 +5,7 @@
 > create-t3-turbo now uses better-auth for authentication!
 > Look out for bugs as we're working through the last issues,
 > especially, the oauth proxy might not play very nice with Expo
-> so you might need to disable that in [`@acme/auth`](./packages/auth/src/index.ts)
+> so you might need to disable that in [`@ephin-travel-kit/auth`](./packages/auth/src/index.ts)
 
 ## Installation
 
@@ -96,7 +96,7 @@ This project uses [Better Auth](https://www.better-auth.com) for authentication.
 
 ```bash
 # Generate the Better Auth schema
-pnpm --filter @acme/auth generate
+pnpm --filter @ephin-travel-kit/auth generate
 ```
 
 This command runs the Better Auth CLI with the following configuration:
@@ -108,7 +108,7 @@ The generation process:
 
 1. Reads the Better Auth configuration from `packages/auth/script/auth-cli.ts`
 2. Generates the appropriate database schema based on your auth setup
-3. Outputs a Drizzle-compatible schema file to the `@acme/db` package
+3. Outputs a Drizzle-compatible schema file to the `@ephin-travel-kit/db` package
 
 > **Note**: The `auth-cli.ts` file is placed in the `script/` directory (instead of `src/`) to prevent accidental imports from other parts of the codebase. This file is exclusively for CLI schema generation and should **not** be used directly in your application. For runtime authentication, use the configuration from `packages/auth/src/index.ts`.
 

@@ -1,5 +1,9 @@
 {
-  "extends": "@acme/tsconfig/compiled-package.json",
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "extends": "@ephin-travel-kit/tsconfig/compiled-package.json",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

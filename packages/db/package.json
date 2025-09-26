@@ -1,5 +1,5 @@
 {
-  "name": "@acme/db",
+  "name": "@ephin-travel-kit/db",
   "private": true,
   "type": "module",
   "exports": {
@@ -35,14 +35,14 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@ephin-travel-kit/eslint-config": "workspace:*",
+    "@ephin-travel-kit/prettier-config": "workspace:*",
+    "@ephin-travel-kit/tsconfig": "workspace:*",
     "dotenv-cli": "^10.0.0",
     "drizzle-kit": "^0.31.4",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ephin-travel-kit/prettier-config"
 }
