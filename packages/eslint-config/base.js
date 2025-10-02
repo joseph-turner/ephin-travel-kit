@@ -1,32 +1,50 @@
-import js from "@eslint/js";
+import eslint from "@eslint/js";
+import { defineConfig } from 'eslint/config';
 import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 import onlyWarn from "eslint-plugin-only-warn";
+import globals from "globals";
+import perfectionist from 'eslint-plugin-perfectionist';
+import security from 'eslint-plugin-security';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import sonarjs from 'eslint-plugin-sonarjs';
 
 /**
  * A shared ESLint configuration for the repository.
  *
  * @type {import("eslint").Linter.Config}
  * */
-export const config = [
-  js.configs.recommended,
-  eslintConfigPrettier,
-  ...tseslint.configs.recommended,
+export const config = defineConfig([
   {
+    ignores: ["dist/**", '.next/**', 'node_modules/**'],
+  },
+  {
+    extends: [
+      eslint.configs.recommended,
+      eslintConfigPrettier,
+      perfectionist.configs['recommended-natural'],
+      tseslint.configs.recommendedTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+      security.configs.recommended,
+      prettierRecommended,
+      sonarjs.configs.recommended,
+    ],
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      sourceType: 'module',
+    },
     plugins: {
       turbo: turboPlugin,
+      onlyWarn,
     },
     rules: {
       "turbo/no-undeclared-env-vars": "warn",
     },
   },
-  {
-    plugins: {
-      onlyWarn,
-    },
-  },
-  {
-    ignores: ["dist/**"],
-  },
-];
+]);
