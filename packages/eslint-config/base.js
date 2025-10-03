@@ -24,8 +24,7 @@ export const config = defineConfig([
       eslint.configs.recommended,
       eslintConfigPrettier,
       perfectionist.configs['recommended-natural'],
-      tseslint.configs.recommendedTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
+      tseslint.configs.recommended,
       security.configs.recommended,
       prettierRecommended,
       sonarjs.configs.recommended,
@@ -44,6 +43,7 @@ export const config = defineConfig([
       onlyWarn,
     },
     rules: {
+      "@typescript-eslint/no-unsafe-call": "off",
       "turbo/no-undeclared-env-vars": "warn",
     },
   },

@@ -4,7 +4,7 @@ import { getImageDimensions } from '@sanity/asset-utils';
 import createImageUrlBuilder from '@sanity/image-url';
 import { createDataAttribute } from 'next-sanity';
 
-import type { Link } from '@/sanity.types';
+import type { Link } from '~/sanity.types';
 
 import { dataset, projectId, studioUrl } from '@/lib/sanity/api';
 
