@@ -1,5 +1,6 @@
+import type { PropsWithChildren } from 'react';
+
 import Link from 'next/link';
-import { PropsWithChildren } from 'react';
 
 import type { Link as LinkType } from '~/sanity.types';
 

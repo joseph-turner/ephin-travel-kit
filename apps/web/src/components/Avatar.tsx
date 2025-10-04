@@ -1,8 +1,10 @@
 import { Image } from 'next-sanity/image';
 
+import type { Person } from '~/sanity.types';
+
 import DateComponent from '@/components/Date';
 import { urlForImage } from '@/lib/sanity/utils';
-import { AllPostsQueryResult, Person } from '~/sanity.types';
+import { AllPostsQueryResult } from '~/sanity.types';
 
 interface Props {
   date?: string;

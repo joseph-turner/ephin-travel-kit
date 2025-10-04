@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 
 import Head from 'next/head';
 
+import type { GetPageQueryResult } from '~/sanity.types';
+
 import { PageOnboarding } from '@/components/Onboarding';
 import PageBuilderPage from '@/components/PageBuilder';
 import { sanityFetch } from '@/lib/sanity/live';
 import { getPageQuery, pagesSlugs } from '@/lib/sanity/queries';
-import { GetPageQueryResult } from '~/sanity.types';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,7 +46,7 @@ export async function generateStaticParams() {
   return data;
 }
 
-export default async function Page(props: Props) {
+export default async function Page(props: Readonly<Props>) {
   const params = await props.params;
   const [{ data: page }] = await Promise.all([
     sanityFetch({ params, query: getPageQuery }),

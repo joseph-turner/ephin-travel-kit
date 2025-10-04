@@ -1,13 +1,15 @@
 'use client';
 
-import { SanityDocument } from 'next-sanity';
+import type { SanityDocument } from 'next-sanity';
+
 import { useOptimistic } from 'next-sanity/hooks';
 import Link from 'next/link';
+
+import type { GetPageQueryResult } from '~/sanity.types';
 
 import BlockRenderer from '@/components/BlockRenderer';
 import { studioUrl } from '@/lib/sanity/api';
 import { dataAttr } from '@/lib/sanity/utils';
-import { GetPageQueryResult } from '~/sanity.types';
 
 interface PageBuilderPageProps {
   page: GetPageQueryResult;
