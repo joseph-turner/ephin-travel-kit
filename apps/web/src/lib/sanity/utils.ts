@@ -4,7 +4,7 @@ import { getImageDimensions } from '@sanity/asset-utils';
 import createImageUrlBuilder from '@sanity/image-url';
 import { createDataAttribute } from 'next-sanity';
 
-import type { Link } from '@/sanity.types';
+import type { Link } from '~/sanity.types';
 
 import { dataset, projectId, studioUrl } from '@/lib/sanity/api';
 
@@ -13,7 +13,13 @@ const imageBuilder = createImageUrlBuilder({
   projectId: projectId || '',
 });
 
-export const urlForImage = (source: any) => {
+type Image = {
+  alt?: string;
+  asset: { _ref: string };
+  crop?: { bottom: number; left: number; right: number; top: number };
+};
+
+export const urlForImage = (source: Image) => {
   // Ensure that source image contains a valid reference
   if (!source?.asset?._ref) {
     return undefined;
@@ -72,16 +78,22 @@ export function linkResolver(link: Link | undefined) {
       if (link?.page && typeof link.page === 'string') {
         return `/${link.page}`;
       }
+      break;
     case 'post':
       if (link?.post && typeof link.post === 'string') {
         return `/posts/${link.post}`;
       }
+      break;
     default:
       return null;
   }
 }
 
-export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
+export function resolveOpenGraphImage(
+  image: Image | undefined,
+  width = 1200,
+  height = 627,
+) {
   if (!image) return;
   const url = urlForImage(image)?.width(1200).height(627).fit('crop').url();
   if (!url) return;
