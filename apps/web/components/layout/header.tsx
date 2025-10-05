@@ -1,18 +1,16 @@
 'use client';
 
-import * as React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
+import * as React from 'react';
 
-import { Button } from '@ephin-travel-kit/ui/button';
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@ephin-travel-kit/ui/navigation-menu';
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@ephin-travel-kit/ui/avatar';
+import { Button } from '@ephin-travel-kit/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -21,11 +19,6 @@ import {
   DialogTrigger,
 } from '@ephin-travel-kit/ui/dialog';
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@ephin-travel-kit/ui/avatar';
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -33,6 +26,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@ephin-travel-kit/ui/dropdown-menu';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@ephin-travel-kit/ui/navigation-menu';
 
 const navigationLinks = [
   { href: '/trips', label: 'Trips' },
@@ -42,11 +42,13 @@ const navigationLinks = [
 ];
 
 interface HeaderProps {
-  user?: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-  } | null;
+  user?:
+    | {
+        email?: string | null;
+        image?: string | null;
+        name?: string | null;
+      }
+    | null;
 }
 
 function MobileNav() {
@@ -85,7 +87,7 @@ function MobileNav() {
   );
 }
 
-function UserMenu({ user }: { user: HeaderProps['user'] }) {
+function UserMenu({ user }: Readonly<{ user: HeaderProps['user'] }>) {
   if (!user) {
     return (
       <Button asChild size="sm" variant="default">
@@ -94,11 +96,14 @@ function UserMenu({ user }: { user: HeaderProps['user'] }) {
     );
   }
 
-  const initials = user.name
-    ?.split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase() || user.email?.[0]?.toUpperCase() || 'U';
+  const initials =
+    user.name
+      ?.split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase() ??
+    user.email?.[0]?.toUpperCase() ??
+    'U';
 
   return (
     <DropdownMenu>
@@ -110,7 +115,10 @@ function UserMenu({ user }: { user: HeaderProps['user'] }) {
           variant="ghost"
         >
           <Avatar className="h-9 w-9">
-            <AvatarImage alt={user.name || 'User'} src={user.image || ''} />
+            <AvatarImage
+              alt={user.name ?? user.email ?? 'User'}
+              src={user.image ?? ''}
+            />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>
@@ -130,7 +138,7 @@ function UserMenu({ user }: { user: HeaderProps['user'] }) {
   );
 }
 
-export function Header({ user }: HeaderProps) {
+export function Header({ user }: Readonly<HeaderProps>) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-neutral-800 dark:bg-neutral-950/95 dark:supports-[backdrop-filter]:bg-neutral-950/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -154,11 +162,12 @@ export function Header({ user }: HeaderProps) {
           <NavigationMenuList>
             {navigationLinks.map((link) => (
               <NavigationMenuItem key={link.href}>
-                <Link href={link.href} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle}>
-                    {link.label}
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle}
+                >
+                  <Link href={link.href}>{link.label}</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
