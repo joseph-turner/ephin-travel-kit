@@ -1,15 +1,15 @@
 import type { PortableTextBlock } from 'next-sanity';
 
-import type { InfoSection } from '~/sanity.types';
+import type { InfoSection as InfoSectionType } from '~/sanity.types';
 
 import PortableText from '@/components/PortableText';
 
 interface InfoProps {
-  block: InfoSection;
+  block: InfoSectionType;
   index: number;
 }
 
-export default function CTA({ block }: Readonly<InfoProps>) {
+export default function InfoSection({ block }: Readonly<InfoProps>) {
   return (
     <div className="container my-12">
       <div className="max-w-3xl">

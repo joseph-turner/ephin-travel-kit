@@ -24,7 +24,7 @@ const dataset = process.env.SANITY_STUDIO_DATASET || 'production';
 
 // URL for preview functionality, defaults to localhost:3000 if not set
 const SANITY_STUDIO_PREVIEW_URL =
-  process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000';
+  process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3001';
 
 // Define the home location for the presentation tool
 const homeLocation = {

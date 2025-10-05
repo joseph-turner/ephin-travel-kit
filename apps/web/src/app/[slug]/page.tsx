@@ -61,7 +61,7 @@ export default async function Page(props: Readonly<Props>) {
   }
 
   return (
-    <div className="my-12 lg:my-24">
+    <main className="my-12 lg:my-24 max-w-6xl mx-auto px-4">
       <Head>
         <title>{page.heading}</title>
       </Head>
@@ -80,6 +80,6 @@ export default async function Page(props: Readonly<Props>) {
         </div>
       </div>
       <PageBuilderPage page={page as GetPageQueryResult} />
-    </div>
+    </main>
   );
 }

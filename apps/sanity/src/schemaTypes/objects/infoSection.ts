@@ -25,7 +25,7 @@ export const infoSection = defineType({
     prepare({ title }) {
       return {
         subtitle: 'Info Section',
-        title: title || 'Untitled Info Section',
+        title: title ?? 'Untitled Info Section',
       };
     },
     select: {

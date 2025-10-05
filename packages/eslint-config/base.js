@@ -46,6 +46,7 @@ export const config = defineConfig([
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-import-type-side-effects": "error",
+      "@typescript-eslint/no-restricted-imports": "error",
       "turbo/no-undeclared-env-vars": "warn",
     },
   },

@@ -67,11 +67,6 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const isDevMode = cookieStore.get('isDevMode')?.value === 'true';
 
-  console.log('Draft Mode:', isDraftMode);
-  console.log('Dev Mode:', isDevMode);
-  console.log('Sanity Project ID:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
-  console.log('Has Read Token:', !!process.env.SANITY_API_READ_TOKEN);
-
   return (
     <html lang="en">
       <body className={geist.className}>
