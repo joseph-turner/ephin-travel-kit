@@ -12,6 +12,8 @@ import { Geist } from 'next/font/google';
 import { cookies, draftMode } from 'next/headers';
 import { Toaster } from 'sonner';
 
+import { Footer, Header } from '@/components/layout';
+
 import DevModeToaster from '../components/DevModeToaster';
 import DraftModeToast from '../components/DraftModeToaster';
 import { handleError } from '../lib/sanity/client-utils';
@@ -70,6 +72,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={geist.className}>
+        <Header />
         <Toaster />
         {isDraftMode && (
           <>
@@ -82,6 +85,8 @@ export default async function RootLayout({
         {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
         <SanityLive onError={handleError} />
         {children}
+        <Footer />
+        {/* Vercel Analytics and Speed Insights */}
         <SpeedInsights />
         <Analytics />
       </body>
