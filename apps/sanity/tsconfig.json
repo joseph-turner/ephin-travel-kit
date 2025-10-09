@@ -18,8 +18,7 @@
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "eslint.config.js"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

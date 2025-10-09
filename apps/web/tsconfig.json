@@ -1,6 +1,14 @@
 {
   "extends": "@ephin-travel-kit/typescript-config/nextjs.json",
   "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "~/*": [
+        "./*"
+      ]
+    },
     "plugins": [
       {
         "name": "next"

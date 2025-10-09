@@ -4,6 +4,7 @@ import { sanityConfig } from '@ephin-travel-kit/eslint-config/sanity';
 export default [
   ...sanityConfig,
   {
+    ignores: ['eslint.config.js'],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json'],
