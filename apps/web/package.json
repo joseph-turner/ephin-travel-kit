@@ -7,8 +7,9 @@
     "dev": "next dev --port 3001 --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "check-types": "tsc --noEmit",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
     "typegen": "sanity typegen generate"
   },
   "dependencies": {

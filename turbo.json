@@ -3,24 +3,12 @@
   "ui": "tui",
   "tasks": {
     "typegen": {
-      "outputs": [
-        "sanity.types.ts"
-      ]
+      "outputs": ["sanity.types.ts"]
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "typegen"
-      ],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env*"
-      ],
-      "outputs": [
-        "dist/**",
-        ".next/**",
-        "!.next/cache/**"
-      ],
+      "dependsOn": ["^build", "typegen"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "env": [
         "NEXT_PUBLIC_SANITY_PROJECT_ID",
         "NEXT_PUBLIC_SANITY_DATASET",
@@ -29,19 +17,16 @@
       ]
     },
     "lint": {
-      "dependsOn": [
-        "^lint"
-      ]
+      "dependsOn": ["^lint"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"]
     },
     "check-types": {
-      "dependsOn": [
-        "^check-types"
-      ]
+      "dependsOn": ["^check-types", "typegen"]
     },
     "dev": {
-      "dependsOn": [
-        "typegen"
-      ],
+      "dependsOn": ["typegen"],
       "cache": false,
       "persistent": true,
       "env": [
