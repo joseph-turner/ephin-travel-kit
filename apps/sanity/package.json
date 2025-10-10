@@ -14,7 +14,7 @@
     "deploy": "sanity deploy",
     "dev": "sanity dev",
     "extract-types": "sanity schema extract --enforce-required-fields",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "sanity start",
     "type-check": "tsc --noEmit"

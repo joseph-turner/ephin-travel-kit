@@ -44,6 +44,7 @@ interface HeaderProps {
 ### Navigation Links
 
 The header includes links to:
+
 - Trips (`/trips`)
 - Gear (`/gear`)
 - Blog (`/blog`)

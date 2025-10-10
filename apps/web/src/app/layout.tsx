@@ -8,7 +8,7 @@ import '@ephin-travel-kit/ui/styles.css';
 
 import './globals.css';
 import { VisualEditing } from 'next-sanity/visual-editing';
-import { Geist } from 'next/font/google';
+import { Fraunces, Open_Sans } from 'next/font/google';
 import { cookies, draftMode } from 'next/headers';
 import { Toaster } from 'sonner';
 
@@ -21,11 +21,17 @@ import { sanityFetch, SanityLive } from '../lib/sanity/live';
 import { settingsQuery } from '../lib/sanity/queries';
 import { resolveOpenGraphImage } from '../lib/sanity/utils';
 
-const geist = Geist({
+const fraunces = Fraunces({
+  axes: ['opsz', 'SOFT', 'WONK'],
   display: 'swap',
   subsets: ['latin'],
-  variable: '--font-geist',
-  weight: ['100', '400', '800'],
+  variable: '--font-fraunces',
+});
+
+const openSans = Open_Sans({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-open-sans',
 });
 
 export async function metadata(): Promise<Metadata> {
@@ -70,8 +76,8 @@ export default async function RootLayout({
   const isDevMode = cookieStore.get('isDevMode')?.value === 'true';
 
   return (
-    <html lang="en">
-      <body className={geist.className}>
+    <html className={`${fraunces.variable} ${openSans.variable}`} lang="en">
+      <body className="font-sans antialiased">
         <Header />
         <Toaster />
         {isDraftMode && (

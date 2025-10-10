@@ -31,10 +31,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50/50 dark:border-neutral-800 dark:bg-neutral-950/50">
-      <div className="container mx-auto px-4 py-12">
-        {/* Top section: Logo + Navigation */}
-        <div className="flex flex-col items-center justify-between space-y-8 lg:flex-row lg:space-y-0">
+    <footer className="bg-secondary border-t border-primary/10">
+      <div className="container mx-auto px-6 py-16">
+        {/* Top section: Logo + Tagline */}
+        <div className="flex flex-col items-center text-center space-y-8">
           {/* Logo */}
           <Link
             aria-label="Home"
@@ -43,20 +43,26 @@ export function Footer() {
           >
             <Image
               alt="Ephin Travel Kit"
+              className="brightness-0"
               height={32}
               src="/logo.svg"
               width={96}
             />
           </Link>
 
+          {/* Tagline */}
+          <p className="font-display text-xl text-primary/80 max-w-md">
+            Crafting intentional journeys for the mindful explorer.
+          </p>
+
           {/* Navigation Links */}
           <nav
             aria-label="Footer navigation"
-            className="flex flex-wrap justify-center gap-x-8 gap-y-4 lg:justify-end"
+            className="flex flex-wrap justify-center gap-x-8 gap-y-4"
           >
             {navigationLinks.map((link) => (
               <Link
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
+                className="font-sans text-sm font-medium text-primary/70 transition-colors hover:text-accent relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:after:w-full"
                 href={link.href}
                 key={link.href}
               >
@@ -67,9 +73,9 @@ export function Footer() {
         </div>
 
         {/* Bottom section: Copyright + Social Links */}
-        <div className="mt-8 flex flex-col items-center justify-between space-y-6 border-t border-neutral-200 pt-8 lg:flex-row lg:space-y-0 dark:border-neutral-800">
+        <div className="mt-12 flex flex-col items-center justify-between space-y-6 border-t border-primary/10 pt-8 lg:flex-row lg:space-y-0">
           {/* Copyright */}
-          <p className="text-center text-sm text-neutral-500 dark:text-neutral-400 lg:text-left">
+          <p className="text-center text-sm text-primary/60 lg:text-left">
             © {currentYear} Ephin Travel Kit. All rights reserved.
           </p>
 
@@ -83,12 +89,12 @@ export function Footer() {
 
 function SocialLinks() {
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-6">
       <span className="sr-only">Follow us on social media</span>
       {socialLinks.map((social) => (
         <Link
           aria-label={social.label}
-          className="text-neutral-500 transition-colors hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+          className="text-primary/60 transition-colors hover:text-accent"
           href={social.href}
           key={social.href}
           rel="noopener noreferrer"

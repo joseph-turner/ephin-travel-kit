@@ -4,6 +4,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Base styling for cinematic travel aesthetic */
+html, body {
+  @apply bg-neutral text-primary antialiased scroll-smooth;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  @apply font-semibold text-primary;
+  font-variation-settings: 'WONK' 1;
+  font-optical-sizing: auto;
+}
+
+.font-display {
+  font-family: var(--font-family-display);
+  font-variation-settings: 'WONK' 1;
+}
+
+.uppercase {
+  letter-spacing: 0.05em;
+}
+
+/* Legacy CSS variables - keeping for compatibility */
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

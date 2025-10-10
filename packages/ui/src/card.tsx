@@ -1,14 +1,15 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
 export function Card({
   children,
   href,
   title,
-}: {
-  children: ReactNode;
-  href: string;
-  title: string;
-}) {
+}: Readonly<
+  PropsWithChildren<{
+    href: string;
+    title: string;
+  }>
+>) {
   return (
     <a
       className="ui:group ui:rounded-lg ui:border ui:border-transparent ui:px-5 ui:py-4 ui:transition-colors hover:ui:border-neutral-700 hover:ui:bg-neutral-800/30"

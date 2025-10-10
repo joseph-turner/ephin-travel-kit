@@ -4,6 +4,7 @@ import { config } from "@ephin-travel-kit/eslint-config/react-internal";
 export default [
   ...config,
   {
+    ignores: ['dist/**', 'build/**', 'node_modules/**', './eslint.config.mjs'],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json'],

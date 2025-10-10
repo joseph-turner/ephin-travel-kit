@@ -7,8 +7,8 @@
     "dev": "next dev --port 3001 --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "type-check": "tsc --noEmit",
     "typegen": "sanity typegen generate"
   },
@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "next": "^15.4.2",
     "next-sanity": "^11.4.2",

@@ -26,7 +26,6 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from '@ephin-travel-kit/ui/navigation-menu';
 import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
@@ -49,9 +48,26 @@ interface HeaderProps {
 }
 
 export function Header({ user }: Readonly<HeaderProps>) {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-neutral-800 dark:bg-neutral-950/95 dark:supports-[backdrop-filter]:bg-neutral-950/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? 'bg-neutral/80 backdrop-blur-sm border-b border-primary/10'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto flex h-20 items-center justify-between px-6">
         {/* Logo */}
         <Link
           aria-label="Home"
@@ -60,6 +76,9 @@ export function Header({ user }: Readonly<HeaderProps>) {
         >
           <Image
             alt="Ephin Travel Kit"
+            className={`transition-all duration-300 ${
+              isScrolled ? 'brightness-0' : 'brightness-100 invert'
+            }`}
             height={32}
             priority
             src="/logo.svg"
@@ -69,14 +88,25 @@ export function Header({ user }: Readonly<HeaderProps>) {
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
+          <NavigationMenuList className="space-x-8">
             {navigationLinks.map((link) => (
               <NavigationMenuItem key={link.href}>
-                <NavigationMenuLink
-                  asChild
-                  className={navigationMenuTriggerStyle}
-                >
-                  <Link href={link.href}>{link.label}</Link>
+                <NavigationMenuLink asChild>
+                  <Link
+                    className={`
+                      font-sans text-sm font-medium transition-all duration-300
+                      hover:after:w-full after:content-[''] after:absolute after:bottom-0
+                      after:left-0 after:h-px after:w-0 after:bg-current after:transition-all
+                      relative pb-1 ${
+                        isScrolled
+                          ? 'text-primary hover:text-accent'
+                          : 'text-neutral hover:text-neutral/80'
+                      }
+                    `}
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
@@ -86,18 +116,18 @@ export function Header({ user }: Readonly<HeaderProps>) {
         {/* Right side: User menu or sign in */}
         <div className="flex items-center space-x-4">
           <div className="hidden lg:flex">
-            <UserMenu user={user} />
+            <UserMenu isScrolled={isScrolled} user={user} />
           </div>
 
           {/* Mobile navigation */}
-          <MobileNav />
+          <MobileNav isScrolled={isScrolled} />
         </div>
       </div>
     </header>
   );
 }
 
-function MobileNav() {
+function MobileNav({ isScrolled }: Readonly<{ isScrolled: boolean }>) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -105,7 +135,9 @@ function MobileNav() {
       <DialogTrigger asChild>
         <Button
           aria-label="Toggle navigation menu"
-          className="lg:hidden"
+          className={`lg:hidden ${
+            isScrolled ? 'text-primary' : 'text-neutral'
+          }`}
           size="icon"
           variant="ghost"
         >
@@ -119,7 +151,7 @@ function MobileNav() {
         <nav className="flex flex-col space-y-4">
           {navigationLinks.map((link) => (
             <Link
-              className="text-lg font-medium transition-colors hover:text-neutral-900 dark:hover:text-neutral-50"
+              className="text-lg font-medium transition-colors hover:text-accent text-primary"
               href={link.href}
               key={link.href}
               onClick={() => setOpen(false)}
@@ -133,10 +165,25 @@ function MobileNav() {
   );
 }
 
-function UserMenu({ user }: Readonly<{ user: HeaderProps['user'] }>) {
+function UserMenu({
+  isScrolled,
+  user,
+}: Readonly<{
+  isScrolled: boolean;
+  user: HeaderProps['user'];
+}>) {
   if (!user) {
     return (
-      <Button asChild size="sm" variant="default">
+      <Button
+        asChild
+        className={`${
+          isScrolled
+            ? 'bg-accent hover:bg-accent/90 text-neutral'
+            : 'bg-neutral text-primary hover:bg-neutral/90'
+        }`}
+        size="sm"
+        variant="default"
+      >
         <Link href="/auth/signin">Sign in</Link>
       </Button>
     );
