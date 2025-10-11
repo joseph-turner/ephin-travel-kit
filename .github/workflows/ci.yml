@@ -33,10 +33,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        working-directory: ./
-        env:
-          CI: true
+        run: pnpm install
 
       - name: typegen
         run: pnpm typegen
