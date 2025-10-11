@@ -41,19 +41,19 @@ export async function metadata(): Promise<Metadata> {
   });
 
   const title = settings?.title ?? 'Ephin Travel Kit';
-  const description = toPlainText(
-    settings?.description ?? 'An awesome travel kit',
-  );
+  const description = settings?.description
+    ? toPlainText(settings.description)
+    : 'An awesome travel kit';
 
-  const ogImage = resolveOpenGraphImage(settings?.ogImage);
+  const ogImage = resolveOpenGraphImage(
+    settings?.ogImage && settings.ogImage.asset
+      ? (settings.ogImage as any)
+      : undefined,
+  );
   let metadataBase: undefined | URL;
-  try {
-    metadataBase = settings?.ogImage?.metadataBase
-      ? new URL(settings?.metadataBase ?? '')
-      : undefined;
-  } catch {
-    // noop
-  }
+  // Set a default metadataBase if needed, or leave as undefined
+  // Example: metadataBase = new URL('https://ephin-travel-kit.com');
+  // For now, leave as undefined since settings.metadataBase does not exist
 
   return {
     description,

@@ -4,7 +4,12 @@ import type { Person } from '~/sanity.types';
 
 import DateComponent from '@/components/Date';
 import { urlForImage } from '@/lib/sanity/utils';
-import { AllPostsQueryResult } from '~/sanity.types';
+
+type ImageType = {
+  alt?: string;
+  asset: { _ref: string };
+  crop?: { bottom: number; left: number; right: number; top: number };
+};
 
 interface Props {
   date?: string;
@@ -28,7 +33,7 @@ export default function Avatar({
             className="h-full rounded-full object-cover"
             height={small ? 32 : 48}
             src={
-              urlForImage(picture)
+              urlForImage(picture as ImageType)
                 ?.height(small ? 64 : 96)
                 .width(small ? 64 : 96)
                 .fit('crop')

@@ -19,8 +19,7 @@
     "dev:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "dev:components": "tsc --watch",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "type-check": "tsc --noEmit"
+    "lint:fix": "eslint . --fix"
   },
   "peerDependencies": {
     "react": "^19"

@@ -1,4 +1,3 @@
-import { cssConfig } from '@ephin-travel-kit/eslint-config/css';
 import { nextJsConfig } from '@ephin-travel-kit/eslint-config/next-js';
 import { defineConfig } from 'eslint/config';
 
