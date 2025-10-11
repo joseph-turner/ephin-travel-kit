@@ -27,7 +27,7 @@
       "dependsOn": ["^lint:fix"]
     },
     "check-types": {
-      "dependsOn": ["^check-types", "typegen"]
+      "dependsOn": ["^build", "^check-types", "typegen"]
     },
     "dev": {
       "dependsOn": ["typegen"],
