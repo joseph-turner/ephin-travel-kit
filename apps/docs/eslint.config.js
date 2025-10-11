@@ -5,6 +5,7 @@ import { defineConfig } from 'eslint/config';
 export default defineConfig([
   {
     extends: nextJsConfig,
+    ignores: ['**/*.config.js', 'node_modules/**', '.next/**', '.turbo/**'],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json'],
