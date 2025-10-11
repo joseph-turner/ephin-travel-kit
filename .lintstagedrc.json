@@ -1,9 +1,19 @@
 {
-  "*.{js,jsx,ts,tsx}": [
-    "eslint . --fix",
+  "apps/web/**/*.{js,jsx,ts,tsx}": [
+    "cd apps/web && pnpm lint:fix",
     "prettier --write"
   ],
-  "*.{json,md,yml,yaml}": [
+  "apps/sanity/**/*.{js,jsx,ts,tsx}": [
+    "cd apps/sanity && pnpm lint:fix",
     "prettier --write"
-  ]
+  ],
+  "apps/docs/**/*.{js,jsx,ts,tsx}": [
+    "cd apps/docs && pnpm lint:fix",
+    "prettier --write"
+  ],
+  "packages/ui/**/*.{js,jsx,ts,tsx}": [
+    "cd packages/ui && pnpm lint:fix",
+    "prettier --write"
+  ],
+  "*.{json,md,yml,yaml}": ["prettier --write"]
 }
