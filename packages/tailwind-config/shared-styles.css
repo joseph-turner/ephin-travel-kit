@@ -4,4 +4,21 @@
   --color-blue-1000: #2a8af6;
   --color-purple-1000: #a853ba;
   --color-red-1000: #e92a67;
+
+  /* New design tokens for cinematic travel aesthetic */
+  --color-primary: #1C1C1A;
+  --color-secondary: #EADFD0;
+  --color-accent: #D9603B;
+  --color-neutral: #F8F6F3;
+
+  /* Typography */
+  --font-family-display: var(--font-fraunces), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Border radius */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
 }

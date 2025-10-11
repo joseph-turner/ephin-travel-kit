@@ -1,4 +1,3 @@
-import { cssConfig } from '@ephin-travel-kit/eslint-config/css';
 import { nextJsConfig } from '@ephin-travel-kit/eslint-config/next-js';
 import { defineConfig } from 'eslint/config';
 
@@ -7,6 +6,7 @@ export default defineConfig([
   {
     extends: [nextJsConfig],
     files: ['**/*.{js,jsx,ts,tsx}'],
+    ignores: ['eslint.config.js'],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json'],

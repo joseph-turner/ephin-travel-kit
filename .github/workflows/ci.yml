@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
     types: [opened, synchronize]
 
@@ -40,3 +40,6 @@ jobs:
 
       - name: lint
         run: pnpm lint
+
+      - name: Type Check
+        run: pnpm check-types

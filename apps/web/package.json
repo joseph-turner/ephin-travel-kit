@@ -8,12 +8,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
     "typegen": "sanity typegen generate"
   },
   "dependencies": {
     "@ephin-travel-kit/ui": "workspace:*",
     "@sanity/asset-utils": "^2.3.0",
+    "@sanity/client": "^7.12.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/uuid": "^3.0.2",
     "@vercel/analytics": "^1.5.0",
@@ -21,6 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "next": "^15.4.2",
     "next-sanity": "^11.4.2",

@@ -2,11 +2,11 @@ export function Gradient({
   className,
   conic,
   small,
-}: {
+}: Readonly<{
   className?: string;
   conic?: boolean;
   small?: boolean;
-}) {
+}>) {
   return (
     <span
       className={`ui:absolute ui:mix-blend-normal ui:will-change-[filter] ui:rounded-[100%] ${
