@@ -1,8 +1,7 @@
+import { AllPosts } from '@/components/Posts';
 import { Hero } from '@/components/sections';
 
-import { AllPosts } from '../components/Posts';
-
-export default function Page() {
+export default async function Page() {
   return (
     <main className="flex flex-col">
       {/* Hero Section */}
@@ -11,15 +10,6 @@ export default function Page() {
       {/* Content Sections */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-5xl font-semibold text-primary mb-6">
-              Recent Adventures
-            </h2>
-            <p className="text-lg text-primary/70 max-w-2xl mx-auto">
-              Explore our latest stories, insights, and discoveries from around
-              the world.
-            </p>
-          </div>
           <AllPosts />
         </div>
       </section>
