@@ -11,8 +11,13 @@ export const seo = defineType({
       type: 'string',
       description:
         'Overrides the title tag for this page. Recommended to keep under 60 characters.',
-      validation: (rule) =>
-        rule.max(60).warning('Title should be under 60 characters'),
+      validation: (Rule) =>
+        Rule.custom((value) => {
+          if (value && value.length > 60) {
+            return 'Warning: Title is over 60 characters. Google typically displays 50-60 characters, but longer titles may be used for specific SEO strategies.';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'metaDescription',
