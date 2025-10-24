@@ -13,6 +13,25 @@
  */
 
 // Source: schema.json
+export type Seo = {
+  _type: 'seo';
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  };
+};
+
 export type CallToAction = {
   _type: 'callToAction';
   heading: string;
@@ -164,6 +183,23 @@ export type Settings = {
     metadataBase?: string;
     _type: 'image';
   };
+};
+
+export type Homepage = {
+  _id: string;
+  _type: 'homepage';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  sections?: Array<
+    | ({
+        _key: string;
+      } & InfoSection)
+    | ({
+        _key: string;
+      } & CallToAction)
+  >;
 };
 
 export type Page = {
@@ -397,25 +433,25 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: 'sanity.imageDimensions';
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+  height: number;
+  width: number;
+  aspectRatio: number;
 };
 
 export type SanityImageHotspot = {
   _type: 'sanity.imageHotspot';
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type SanityImageCrop = {
   _type: 'sanity.imageCrop';
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityFileAsset = {
@@ -495,11 +531,13 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Seo
   | CallToAction
   | Link
   | InfoSection
   | BlockContent
   | Settings
+  | Homepage
   | Page
   | Post
   | Person

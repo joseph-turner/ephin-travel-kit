@@ -62,15 +62,13 @@ const Posts = ({
   heading?: string;
   subHeading?: string;
 }) => (
-  <div>
+  <div className="text-center mb-16">
     {heading && (
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         {heading}
       </h2>
     )}
-    {subHeading && (
-      <p className="mt-2 text-lg leading-8 text-gray-600">{subHeading}</p>
-    )}
+    {subHeading && <p className="text-lg text-primary/70">{subHeading}</p>}
     <div className="pt-6 space-y-6">{children}</div>
   </div>
 );
@@ -109,7 +107,7 @@ export const AllPosts = async () => {
 
   return (
     <Posts
-      heading="Recent Posts"
+      heading="Recent Adventures"
       subHeading={`${data.length === 1 ? 'This blog post is' : `These ${data.length} blog posts are`} populated from your Sanity Studio.`}
     >
       {data.map((post: PostType) => (
