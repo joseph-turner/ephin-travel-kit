@@ -19,7 +19,6 @@ export default function RegisterPage() {
       });
 
       if (signInResult?.error) {
-        console.log('Sign-in error after registration:', signInResult.error);
         setError('Failed to sign in after registration');
         return;
       }
