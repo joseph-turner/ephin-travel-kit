@@ -3,10 +3,11 @@ import type { PropsWithChildren } from 'react';
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { toPlainText } from 'next-sanity';
+import { getServerSession } from 'next-auth';
 import '@ephin-travel-kit/ui/styles.css';
 
 import './globals.css';
+import { toPlainText } from 'next-sanity';
 import { VisualEditing } from 'next-sanity/visual-editing';
 import { Fraunces, Open_Sans } from 'next/font/google';
 import { cookies, draftMode } from 'next/headers';
@@ -16,6 +17,8 @@ import { Footer, Header } from '@/components/layout';
 
 import DevModeToaster from '../components/DevModeToaster';
 import DraftModeToast from '../components/DraftModeToaster';
+import { Providers } from '../components/Providers';
+import { authOptions } from '../lib/auth';
 import { handleError } from '../lib/sanity/client-utils';
 import { sanityFetch, SanityLive } from '../lib/sanity/live';
 import { settingsQuery } from '../lib/sanity/queries';
@@ -74,27 +77,30 @@ export default async function RootLayout({
   const { isEnabled: isDraftMode } = await draftMode();
   const cookieStore = await cookies();
   const isDevMode = cookieStore.get('isDevMode')?.value === 'true';
+  const session = await getServerSession(authOptions);
 
   return (
     <html className={`${fraunces.variable} ${openSans.variable}`} lang="en">
       <body className="font-sans antialiased">
-        <Header />
-        <Toaster />
-        {isDraftMode && (
-          <>
-            <DraftModeToast />
-            <VisualEditing />
-          </>
-        )}
-        {/* Show dev mode toaster if in dev mode but not draft mode */}
-        <DevModeToaster isDevMode={isDevMode} isDraftMode={isDraftMode} />
-        {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
-        <SanityLive onError={handleError} />
-        {children}
-        <Footer />
-        {/* Vercel Analytics and Speed Insights */}
-        <SpeedInsights />
-        <Analytics />
+        <Providers session={session}>
+          <Header user={session?.user} />
+          <Toaster />
+          {isDraftMode && (
+            <>
+              <DraftModeToast />
+              <VisualEditing />
+            </>
+          )}
+          {/* Show dev mode toaster if in dev mode but not draft mode */}
+          <DevModeToaster isDevMode={isDevMode} isDraftMode={isDraftMode} />
+          {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
+          <SanityLive onError={handleError} />
+          {children}
+          <Footer />
+          {/* Vercel Analytics and Speed Insights */}
+          <SpeedInsights />
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );

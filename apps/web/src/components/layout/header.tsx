@@ -30,7 +30,7 @@ import {
 import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 const navigationLinks = [
   { href: '/trips', label: 'Trips' },
@@ -48,9 +48,9 @@ interface HeaderProps {
 }
 
 export function Header({ user }: Readonly<HeaderProps>) {
-  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -128,7 +128,7 @@ export function Header({ user }: Readonly<HeaderProps>) {
 }
 
 function MobileNav({ isScrolled }: Readonly<{ isScrolled: boolean }>) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>
